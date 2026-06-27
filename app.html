@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroD Estudos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+</head>
+<body class="tema-neutro">
+    <header class="topo">
+        <div>
+            <p class="marca">NeuroD Estudos</p>
+            <h1>Plataforma online de microlearning</h1>
+        </div>
+        <div class="controles-acessibilidade" aria-label="Controles de tema">
+            <button type="button" onclick="mudarTema('tema-neutro')">Neutro</button>
+            <button type="button" onclick="mudarTema('tema-alto-contraste')">Contraste</button>
+            <button type="button" onclick="mudarTema('tema-foco')">Foco</button>
+        </div>
+    </header>
+
+    <main class="layout">
+        <section class="painel entrada">
+            <div class="cabecalho-secao">
+                <span class="etiqueta">Entrada</span>
+                <h2>Acesse como aluno ou professor</h2>
+            </div>
+
+            <div class="abas" role="tablist" aria-label="Tipo de acesso">
+                <button type="button" class="aba ativa" data-perfil="aluno">Aluno</button>
+                <button type="button" class="aba" data-perfil="professor">Professor</button>
+            </div>
+
+            <div class="grade-acesso">
+                <article class="bloco-acesso">
+                    <h3>Cadastros de exemplo</h3>
+                    <p>Use estes perfis para apresentar a plataforma com dados prontos no banco.</p>
+                    <div id="lista-exemplos" class="lista-exemplos"></div>
+                </article>
+
+                <article class="bloco-acesso">
+                    <h3 id="titulo-formulario">Cadastrar aluno</h3>
+                    <form id="form-cadastro">
+                        <label for="nome">Nome</label>
+                        <input id="nome" name="nome" type="text" autocomplete="name" required>
+
+                        <label for="email">E-mail</label>
+                        <input id="email" name="email" type="email" autocomplete="email" required>
+
+                        <div id="campo-aluno">
+                            <label for="turma">Turma</label>
+                            <input id="turma" name="turma" type="text" placeholder="Ex.: 2o ano B">
+
+                            <label for="objetivo">Objetivo de estudo</label>
+                            <input id="objetivo" name="objetivo" type="text" placeholder="Ex.: revisar em blocos curtos">
+                        </div>
+
+                        <div id="campo-professor" hidden>
+                            <label for="disciplina">Disciplina</label>
+                            <input id="disciplina" name="disciplina" type="text" placeholder="Ex.: Matematica">
+
+                            <label for="especialidade">Especialidade</label>
+                            <input id="especialidade" name="especialidade" type="text" placeholder="Ex.: atividades objetivas">
+                        </div>
+
+                        <button type="submit" id="botao-cadastro">Cadastrar aluno</button>
+                    </form>
+                </article>
+            </div>
+        </section>
+
+        <section class="painel dashboard" id="dashboard" hidden>
+            <div class="saudacao">
+                <div>
+                    <span class="etiqueta" id="perfil-atual">Microlearning</span>
+                    <h2 id="texto-saudacao"></h2>
+                    <p id="detalhe-perfil"></p>
+                </div>
+                <button type="button" id="trocar-perfil">Trocar perfil</button>
+            </div>
+
+            <div id="area-microlearning" class="area-microlearning"></div>
+        </section>
+
+        <section class="painel banco">
+            <div class="cabecalho-secao">
+                <span class="etiqueta">Banco de dados</span>
+                <h2>Estrutura para demonstracao</h2>
+            </div>
+            <div id="resumo-banco" class="resumo-banco"></div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
